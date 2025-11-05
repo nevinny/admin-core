@@ -66,7 +66,6 @@ class DefaultCrudController extends AbstractCrudController
     {
         return $filters
             ->add('title')
-//            ->add('entityType')
             ->add('status')
             ;
     }
