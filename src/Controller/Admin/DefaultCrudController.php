@@ -5,7 +5,6 @@ namespace AdminCore\Controller\Admin;
 use AdminCore\Controller\Admin\FormField\CKEditorField;
 use AdminCore\Controller\Admin\Trait\EntityTypeRedirectActionsTrait;
 use AdminCore\Entity\Main;
-use AdminCore\Entity\Product;
 use AdminCore\Entity\SectionLink;
 use AdminCore\Entity\SectionType;
 use AdminCore\Enum\Statuses;
@@ -467,18 +466,7 @@ class DefaultCrudController extends AbstractCrudController
             $main->setIsNode($entityInstance->getIsNode());
             $main->setCreatedAt($entityInstance->getCreatedAt());
             $main->setUpdatedAt($entityInstance->getUpdatedAt());
-            if ($entityInstance instanceof Product) {
-                if ($entityInstance->getParent()) {
-                    $categoryType = $this->entityManager->getRepository(SectionType::class)
-                        ->findOneBy(['code' => 'category']);
 
-                    $parentMain = $this->entityManager->getRepository(Main::class)->findOneBy([
-                        'entityId' => $categoryType->getId(),
-                        'entityType' => $categoryType,
-                    ]);
-                    $main->setParent($parentMain);
-                }
-            }
         }
     }
 }
