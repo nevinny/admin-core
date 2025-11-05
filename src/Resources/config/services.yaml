@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  # Регистрируем все сервисы из папки Service
+  AdminCore\Service\:
+    resource: '../../Service/*'
+
+  # Регистрируем контроллеры
+  AdminCore\Controller\:
+    resource: '../../Controller/*'
+    tags: [ 'controller.service_arguments' ]
