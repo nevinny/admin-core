@@ -1,0 +1,30 @@
+{
+  "name": "nevinny/admin-core",
+  "type": "symfony-bundle",
+  "description": "Core functionality for AdminCore - EasyAdmin extensions",
+  "keywords": ["symfony", "easyadmin", "admin", "crud"],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "AdminCore\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AdminCore\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "symfony/framework-bundle": "^7.0",
+    "easycorp/easyadmin-bundle": "^4.0"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^6.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0-dev"
+    }
+  }
+}

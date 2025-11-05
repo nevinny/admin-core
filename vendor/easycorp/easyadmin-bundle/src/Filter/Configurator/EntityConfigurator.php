@@ -1,0 +1,61 @@
+<?php
+
+namespace EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator;
+
+use Doctrine\ORM\Mapping\JoinColumnMapping;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
+use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+
+/**
+ * @author Yonel Ceruto <yonelceruto@gmail.com>
+ * @author Javier Eguiluz <javier.eguiluz@gmail.com>
+ */
+final class EntityConfigurator implements FilterConfiguratorInterface
+{
+    public function supports(FilterDto $filterDto, ?FieldDto $fieldDto, EntityDto $entityDto, AdminContext $context): bool
+    {
+        return EntityFilter::class === $filterDto->getFqcn();
+    }
+
+    public function configure(FilterDto $filterDto, ?FieldDto $fieldDto, EntityDto $entityDto, AdminContext $context): void
+    {
+        $propertyName = $filterDto->getProperty();
+        if (!$entityDto->getClassMetadata()->hasAssociation($propertyName)) {
+            return;
+        }
+
+        // TODO: add the 'em' form type option too?
+        $filterDto->setFormTypeOptionIfNotSet('value_type_options.class', $entityDto->getClassMetadata()->getAssociationTargetClass($propertyName));
+        $filterDto->setFormTypeOptionIfNotSet('value_type_options.multiple', $entityDto->getClassMetadata()->isCollectionValuedAssociation($propertyName));
+        $filterDto->setFormTypeOptionIfNotSet('value_type_options.attr.data-ea-widget', 'ea-autocomplete');
+
+        if ($entityDto->getClassMetadata()->isSingleValuedAssociation($propertyName)) {
+            $associationMapping = $entityDto->getClassMetadata()->associationMappings[$propertyName];
+            // don't show the 'empty value' placeholder when all join columns are required,
+            // because an empty filter value would always return no result
+            $numberOfRequiredJoinColumns = \count(array_filter(
+                $associationMapping['joinColumns'],
+                static function (array|JoinColumnMapping $joinColumn): bool {
+                    // Doctrine ORM 3.x changed the returned type from array to JoinColumnMapping
+                    if ($joinColumn instanceof JoinColumnMapping) {
+                        $isNullable = $joinColumn->nullable ?? false;
+                    } else {
+                        $isNullable = $joinColumn['nullable'] ?? false;
+                    }
+
+                    return false === $isNullable;
+                }
+            ));
+
+            $someJoinColumnsAreNullable = \count($associationMapping['joinColumns']) !== $numberOfRequiredJoinColumns;
+
+            if ($someJoinColumnsAreNullable) {
+                $filterDto->setFormTypeOptionIfNotSet('value_type_options.placeholder', 'label.form.empty_value');
+            }
+        }
+    }
+}
