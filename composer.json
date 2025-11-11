@@ -17,7 +17,8 @@
   "require": {
     "php": ">=8.1",
     "symfony/framework-bundle": "^7.0",
-    "easycorp/easyadmin-bundle": "^4.0"
+    "easycorp/easyadmin-bundle": "^4.0",
+    "vich/uploader-bundle": "^2.7"
   },
   "require-dev": {
     "symfony/phpunit-bridge": "^6.0"

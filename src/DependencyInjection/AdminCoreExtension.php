@@ -3,14 +3,14 @@ namespace AdminCore\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class AdminCoreExtension extends Extension
+class AdminCoreExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        // Загрузка сервисов
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
@@ -20,18 +20,23 @@ class AdminCoreExtension extends Extension
 
     public function prepend(ContainerBuilder $container): void
     {
-        // Автоматическая регистрация Doctrine маппинга
         $container->prependExtensionConfig('doctrine', [
             'orm' => [
                 'mappings' => [
                     'AdminCore' => [
                         'is_bundle' => false,
-                        'type' => 'attribute', // или 'annotation'
+                        'type' => 'attribute',
                         'dir' => dirname(__DIR__) . '/Entity',
                         'prefix' => 'AdminCore\Entity',
                         'alias' => 'AdminCore',
                     ],
                 ],
+            ],
+        ]);
+
+        $container->prependExtensionConfig('twig', [
+            'paths' => [
+                dirname(__DIR__) . '/Resources/views' => 'AdminCore',
             ],
         ]);
     }

@@ -4,11 +4,24 @@ services:
         autoconfigure: true
         public: false
 
-    # Регистрируем все сервисы из папки Service
-    AdminCore\Service\:
-        resource: '../../Service/*'
+    # Регистрируем все из корня src/
+    AdminCore\:
+        resource: '../../*'
+        exclude:
+            - '../../Entity/'
+            - '../../Resources/'
+            - '../../Tests/'
+            - '../../Controller/Admin/FormField/'
+            - '../../DependencyInjection/'
+            - '../../AdminCoreBundle.php'
 
-  # Регистрируем контроллеры
+    # Репозитории
+    AdminCore\Repository\:
+        resource: '../../Repository/*'
+        tags: ['doctrine.repository_service']
+
+    # Контроллеры
     AdminCore\Controller\:
         resource: '../../Controller/*'
-        tags: [ 'controller.service_arguments' ]
+        exclude: '../../Controller/Admin/FormField/'
+        tags: ['controller.service_arguments']

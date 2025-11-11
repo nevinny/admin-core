@@ -157,7 +157,7 @@ class DefaultCrudController extends AbstractCrudController
                 $qb->andWhere('entity.parent = :parentId')
                     ->setParameter('parentId', $parentId);
             } else {
-                $qb->andWhere('entity.parent IS NULL');
+                $qb->andWhere('entity.parent = 0');
             }
         }
         $qb->andWhere('entity.status != :status')
@@ -226,6 +226,7 @@ class DefaultCrudController extends AbstractCrudController
             // Пропускаем системные, meta и image поля
             if (in_array($fieldName, [
                 'id', 'parent', 'created_at', 'updated_at', 'ord', 'status',
+                'created_by', 'updated_by',
                 'metaTitle', 'metaKeywords', 'metaDescription',
                 'image', 'logo', 'preview',
                 'variants'
@@ -318,10 +319,15 @@ class DefaultCrudController extends AbstractCrudController
         switch ($fieldConfig['type']) {
             case 'string':
                 if (str_contains($fieldName, 'slug')) {
-                    return SlugField::new($fieldName)->setTargetFieldName('title');
+                    return SlugField::new($fieldName)
+                        ->setTargetFieldName('title')
+                        ->hideOnIndex()
+                        ;
                 }
-                if (str_contains($fieldName, 'url')) {
-                    return UrlField::new($fieldName);
+                if (str_contains($fieldName, 'Url')) {
+                    return UrlField::new($fieldName)
+                        ->hideOnIndex()
+                        ;
                 }
                 return TextField::new($fieldName)->setMaxLength(255);
             case 'text':
@@ -339,7 +345,9 @@ class DefaultCrudController extends AbstractCrudController
 //                            'heading1' => ['tagName' => 'h2']
 //                        ]
 //                    ]);
-                return CKEditorField::new($fieldName);
+                return CKEditorField::new($fieldName)
+                    ->hideOnIndex()
+                    ;
             case 'datetime':
                 return DateTimeField::new($fieldName);
             case 'boolean':
@@ -440,33 +448,36 @@ class DefaultCrudController extends AbstractCrudController
             ->findOneBy([
                 'entityClass' => $reflectionClass->getName(),
             ]);
-//        dd($entityInstance,$reflectionClass,$sectionType);
 
-        $repo = $entityManager->getRepository(Main::class);
-        $main = $repo->findOneBy([
-            'entityType' => $sectionType->getId(),
-            'entityId' => $entityInstance->getId()
-        ]);
-        // Обновляем статус в связанной сущности
-        if ($main) {
-            $main->setStatus($entityInstance->getStatus());
-            $main->setTitle($entityInstance->getTitle());
-            $main->setSlug($entityInstance->getSlug());
-            $main->setFullPath($this->pathGenerator->generateFullPath($main));
+        if($sectionType)
+        {
+            $repo = $entityManager->getRepository(Main::class);
+            $main = $repo->findOneBy([
+                'entityType' => $sectionType->getId(),
+                'entityId' => $entityInstance->getId()
+            ]);
+            // Обновляем статус в связанной сущности
+            if ($main) {
+                $main->setStatus($entityInstance->getStatus());
+                $main->setTitle($entityInstance->getTitle());
+                $main->setSlug($entityInstance->getSlug());
+                $main->setFullPath($this->pathGenerator->generateFullPath($main));
 
-            $entityManager->persist($main);
-            $entityManager->flush();
-        } else {
-            $main = new Main();
-            $main->setEntityType($sectionType);
-            $main->setEntityId($entityInstance->getId());
-            $main->setTitle($entityInstance->getTitle());
-            $main->setSlug($entityInstance->getSlug());
-            $main->setStatus($entityInstance->getStatus());
-            $main->setIsNode($entityInstance->getIsNode());
-            $main->setCreatedAt($entityInstance->getCreatedAt());
-            $main->setUpdatedAt($entityInstance->getUpdatedAt());
+                $entityManager->persist($main);
+                $entityManager->flush();
+            } else {
+                $main = new Main();
+                $main->setEntityType($sectionType);
+                $main->setEntityId($entityInstance->getId());
+                $main->setTitle($entityInstance->getTitle());
+                $main->setSlug($entityInstance->getSlug());
+                $main->setStatus($entityInstance->getStatus());
+                $main->setIsNode($entityInstance->getIsNode());
+                $main->setCreatedAt($entityInstance->getCreatedAt());
+                $main->setUpdatedAt($entityInstance->getUpdatedAt());
 
+            }
         }
+
     }
 }

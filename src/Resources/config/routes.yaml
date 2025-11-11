@@ -1,0 +1,4 @@
+admin_security:
+        resource: ../../Controller/SecurityController.php
+        type: attribute
+        prefix: /
