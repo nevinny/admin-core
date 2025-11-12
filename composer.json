@@ -16,7 +16,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "AdminCore\\Tests\\": "tests/"
+      "Nevinny\\AdminCoreBundle\\Tests\\": "tests/"
     }
   },
   "require": {

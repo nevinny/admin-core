@@ -2,15 +2,10 @@
 
 namespace Nevinny\AdminCoreBundle\Controller\Admin\Trait;
 
-use Nevinny\AdminCoreBundle\Controller\Admin\DefaultCrudController;
-use Nevinny\AdminCoreBundle\Entity\SectionType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 trait EntityTypeRedirectActionsTrait
 {

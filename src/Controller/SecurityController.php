@@ -8,7 +8,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/admin/login', name: 'admin_login')]
+    #[Route('/admin/login', name: 'admincore_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // Если пользователь уже залогинен, редирект в админку
@@ -22,13 +22,13 @@ class SecurityController extends AbstractController
         // Последний введенный email
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('@AdminCore/security/login.html.twig', [
+        return $this->render('@NevinnyAdminCore/security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
     }
 
-    #[Route('/admin/logout', name: 'admin_logout')]
+    #[Route('/admin/logout', name: 'admincore_logout')]
     public function logout(): void
     {
         // Этот метод может быть пустым - он будет перехвачен фаерволом
