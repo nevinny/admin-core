@@ -2,14 +2,11 @@
 
 namespace Nevinny\AdminCoreBundle\Entity;
 
-use Nevinny\AdminCoreBundle\Entity\SectionType;
 use Nevinny\AdminCoreBundle\Entity\Trait\Created;
 use Nevinny\AdminCoreBundle\Entity\Trait\Status;
-use Nevinny\AdminCoreBundle\Enum\Statuses;
 use Nevinny\AdminCoreBundle\Interface\SystemEntityInterface;
 use Nevinny\AdminCoreBundle\Repository\MainRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MainRepository::class)]

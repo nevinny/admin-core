@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class AdminCoreExtension extends Extension implements PrependExtensionInterface
+class NevinnyAdminCoreExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -20,23 +20,25 @@ class AdminCoreExtension extends Extension implements PrependExtensionInterface
 
     public function prepend(ContainerBuilder $container): void
     {
+        // Регистрация Entity для Doctrine
         $container->prependExtensionConfig('doctrine', [
             'orm' => [
                 'mappings' => [
-                    'AdminCore' => [
+                    'NevinnyAdminCoreBundle' => [  // ← Изменено название маппинга
                         'is_bundle' => false,
                         'type' => 'attribute',
                         'dir' => dirname(__DIR__) . '/Entity',
-                        'prefix' => 'AdminCore\Entity',
-                        'alias' => 'AdminCore',
+                        'prefix' => 'Nevinny\\AdminCoreBundle\\Entity',  // ← ИСПРАВЛЕНО!
+                        'alias' => 'NevinnyAdminCore',  // ← Изменен alias
                     ],
                 ],
             ],
         ]);
 
+        // Регистрация Twig шаблонов
         $container->prependExtensionConfig('twig', [
             'paths' => [
-                dirname(__DIR__) . '/Resources/views' => 'AdminCore',
+                dirname(__DIR__) . '/Resources/views' => 'NevinnyAdminCore',  // ← Изменен alias
             ],
         ]);
     }

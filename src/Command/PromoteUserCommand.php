@@ -1,5 +1,5 @@
 <?php
-namespace AdminCore\Command;
+namespace Nevinny\AdminCoreBundle\Command;
 
 use AdminCore\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;

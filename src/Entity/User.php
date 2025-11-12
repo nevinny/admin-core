@@ -1,6 +1,6 @@
 <?php
 
-namespace Nevinny\AdminCore\Entity;
+namespace Nevinny\AdminCoreBundle\Entity;
 
 use Nevinny\AdminCoreBundle\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;

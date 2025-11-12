@@ -4,7 +4,7 @@ namespace  Nevinny\AdminCoreBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-class AdminCoreBundle extends Bundle
+class NevinnyAdminCoreBundle extends Bundle
 {
     public function getPath(): string
     {
