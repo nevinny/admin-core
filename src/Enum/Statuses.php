@@ -1,5 +1,5 @@
 <?php
-namespace AdminCore\Enum;
+namespace Nevinny\AdminCoreBundle\Enum;
 
 enum Statuses: string
 {

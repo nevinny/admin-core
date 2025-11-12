@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Entity\Trait;
+namespace Nevinny\AdminCoreBundle\Entity\Trait;
 
-use AdminCore\Enum\Statuses;
+use Nevinny\AdminCoreBundle\Enum\Statuses;
 use Doctrine\ORM\Mapping as ORM;
 
 trait Status

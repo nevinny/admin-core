@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Controller\Admin;
+namespace Nevinny\AdminCoreBundle\Controller\Admin;
 
-use AdminCore\Entity\SectionLink;
+use Nevinny\AdminCoreBundle\Entity\SectionLink;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;

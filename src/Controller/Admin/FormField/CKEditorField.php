@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminCore\Controller\Admin\FormField;
+namespace Nevinny\AdminCoreBundle\Controller\Admin\FormField;
 
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;

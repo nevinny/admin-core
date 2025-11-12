@@ -1,5 +1,5 @@
 <?php
-namespace AdminCore\Controller;
+namespace Nevinny\AdminCoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Repository;
+namespace Nevinny\AdminCoreBundle\Repository;
 
-use AdminCore\Entity\User;
+use Nevinny\AdminCoreBundle\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;

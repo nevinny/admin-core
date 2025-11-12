@@ -1,9 +1,9 @@
 <?php
 
-namespace AdminCore\Entity;
+namespace Nevinny\AdminCoreBundle\Entity;
 
-use AdminCore\Interface\SystemEntityInterface;
-use AdminCore\Repository\SectionTypeRepository;
+use Nevinny\AdminCoreBundle\Interface\SystemEntityInterface;
+use Nevinny\AdminCoreBundle\Repository\SectionTypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;

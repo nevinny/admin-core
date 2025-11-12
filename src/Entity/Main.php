@@ -1,13 +1,13 @@
 <?php
 
-namespace AdminCore\Entity;
+namespace Nevinny\AdminCoreBundle\Entity;
 
-use AdminCore\Entity\SectionType;
-use AdminCore\Entity\Trait\Created;
-use AdminCore\Entity\Trait\Status;
-use AdminCore\Enum\Statuses;
-use AdminCore\Interface\SystemEntityInterface;
-use AdminCore\Repository\MainRepository;
+use Nevinny\AdminCoreBundle\Entity\SectionType;
+use Nevinny\AdminCoreBundle\Entity\Trait\Created;
+use Nevinny\AdminCoreBundle\Entity\Trait\Status;
+use Nevinny\AdminCoreBundle\Enum\Statuses;
+use Nevinny\AdminCoreBundle\Interface\SystemEntityInterface;
+use Nevinny\AdminCoreBundle\Repository\MainRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

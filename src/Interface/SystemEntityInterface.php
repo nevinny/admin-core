@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminCore\Interface;
+namespace Nevinny\AdminCoreBundle\Interface;
 
 interface SystemEntityInterface
 {

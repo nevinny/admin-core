@@ -52,3 +52,9 @@
 /.web-server-pid
 
 /vendor
+/bin
+/config
+/public_html
+/public_html
+/var
+/.idea

@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Controller\Admin;
+namespace Nevinny\AdminCoreBundle\Controller\Admin;
 
-use AdminCore\Entity\User;
+use Nevinny\AdminCoreBundle\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;

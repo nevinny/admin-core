@@ -1,9 +1,9 @@
 <?php
 
-namespace AdminCore\Controller\Admin\Trait;
+namespace Nevinny\AdminCoreBundle\Controller\Admin\Trait;
 
-use AdminCore\Controller\Admin\DefaultCrudController;
-use AdminCore\Entity\SectionType;
+use Nevinny\AdminCoreBundle\Controller\Admin\DefaultCrudController;
+use Nevinny\AdminCoreBundle\Entity\SectionType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;

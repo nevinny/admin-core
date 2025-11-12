@@ -1,9 +1,9 @@
 <?php
 
-namespace AdminCore\Entity\Trait;
+namespace Nevinny\AdminCoreBundle\Entity\Trait;
 
 use Doctrine\ORM\Mapping as ORM;
-use AdminCore\Entity\User as BaseUser;
+use Nevinny\AdminCoreBundle\Entity\User as BaseUser;
 trait Owner
 {
     #[ORM\ManyToOne(targetEntity: BaseUser::class)]

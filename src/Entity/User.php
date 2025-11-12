@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Entity;
+namespace Nevinny\AdminCore\Entity;
 
-use AdminCore\Repository\UserRepository;
+use Nevinny\AdminCoreBundle\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

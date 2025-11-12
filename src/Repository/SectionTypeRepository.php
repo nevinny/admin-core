@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Repository;
+namespace Nevinny\AdminCoreBundle\Repository;
 
-use AdminCore\Entity\SectionType;
+use Nevinny\AdminCoreBundle\Entity\SectionType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

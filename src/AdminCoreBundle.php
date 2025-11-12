@@ -1,7 +1,8 @@
 <?php
-namespace  AdminCore;
+namespace  Nevinny\AdminCoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 class AdminCoreBundle extends Bundle
 {

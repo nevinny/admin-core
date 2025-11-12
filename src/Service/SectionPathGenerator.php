@@ -1,8 +1,8 @@
 <?php
 
-namespace AdminCore\Service;
+namespace Nevinny\AdminCoreBundle\Service;
 
-use AdminCore\Entity\Main;
+use Nevinny\AdminCoreBundle\Entity\Main;
 
 final class SectionPathGenerator
 {

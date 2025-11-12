@@ -1,14 +1,14 @@
 <?php
 
-namespace AdminCore\Controller\Admin;
+namespace Nevinny\AdminCoreBundle\Controller\Admin;
 
-use AdminCore\Controller\Admin\FormField\CKEditorField;
-use AdminCore\Controller\Admin\Trait\EntityTypeRedirectActionsTrait;
-use AdminCore\Entity\Main;
-use AdminCore\Entity\SectionLink;
-use AdminCore\Entity\SectionType;
-use AdminCore\Enum\Statuses;
-use AdminCore\Service\SectionPathGenerator;
+use Nevinny\AdminCoreBundle\Controller\Admin\FormField\CKEditorField;
+use Nevinny\AdminCoreBundle\Controller\Admin\Trait\EntityTypeRedirectActionsTrait;
+use Nevinny\AdminCoreBundle\Entity\Main;
+use Nevinny\AdminCoreBundle\Entity\SectionLink;
+use Nevinny\AdminCoreBundle\Entity\SectionType;
+use Nevinny\AdminCoreBundle\Enum\Statuses;
+use Nevinny\AdminCoreBundle\Service\SectionPathGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;

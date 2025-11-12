@@ -1,9 +1,9 @@
 <?php
 
-namespace AdminCore\Entity;
+namespace Nevinny\AdminCoreBundle\Entity;
 
-use AdminCore\Interface\SystemEntityInterface;
-use AdminCore\Repository\SectionLinkRepository;
+use Nevinny\AdminCoreBundle\Interface\SystemEntityInterface;
+use Nevinny\AdminCoreBundle\Repository\SectionLinkRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SectionLinkRepository::class)]

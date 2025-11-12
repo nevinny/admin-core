@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminCore\Entity\Trait;
+namespace Nevinny\AdminCoreBundle\Entity\Trait;
 
 use Doctrine\ORM\Mapping as ORM;
 

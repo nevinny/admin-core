@@ -1,5 +1,5 @@
 <?php
-namespace AdminCore\DependencyInjection;
+namespace Nevinny\AdminCoreBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
