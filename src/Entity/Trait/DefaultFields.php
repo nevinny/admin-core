@@ -12,8 +12,13 @@ trait DefaultFields
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
 
+    /**
+     * Корневой уровень — 0. Дефолт PHP-свойства именно 0, а не null: фильтры и сортировки
+     * в проектах пишутся по 0, и null там даёт неожиданно пустую выборку. Атрибут колонки
+     * не трогаем — иначе у всех проектов на бандле появится лишний diff миграции.
+     */
     #[ORM\Column(nullable: true)]
-    private ?int $parent = null;
+    private ?int $parent = 0;
 
     #[ORM\Column(options: ['default' => '0'])]
     private ?int $ord = 0;

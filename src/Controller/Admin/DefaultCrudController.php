@@ -157,7 +157,12 @@ class DefaultCrudController extends AbstractCrudController
                 $qb->andWhere('entity.parent = :parentId')
                     ->setParameter('parentId', $parentId);
             } else {
-                $qb->andWhere('entity.parent = 0');
+                // Корень дерева — это и `parent = 0`, и `parent IS NULL`: дефолт поля в
+                // DefaultFields — null, а `NULL = 0` в SQL не истина, поэтому без второго
+                // условия записи, созданные кодом (импорты, команды, фронтовые формы),
+                // физически есть в БД, но в листинге админки не показываются. То же и для
+                // сущностей со связью parent: у корневых элементов там NULL.
+                $qb->andWhere('(entity.parent = 0 OR entity.parent IS NULL)');
             }
         }
         $qb->andWhere('entity.status != :status')
